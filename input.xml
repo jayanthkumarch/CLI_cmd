@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestSuite>
+
+
+<TestCase>
+<test_command>version_get</test_command>
+</TestCase>
+
+
+<TestCase>
+<test_command>output_reporting_data_filters_viewtype add external vvvv</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>output_reporting_data_filters_member add external mmmm</test_command>
+</TestCase>
+
+
+<TestCase>
+<test_command>admin_support_getbundle scp://anjank@10.32.1.107:</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>admin_support_access set on</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>admin_support_debug set on</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>admin_network_hostname set admin</test_command>
+</TestCase>
+
+
+<TestCase>
+<test_command>admin_network_domain set testing.com</test_command>
+</TestCase>
+
+
+<TestCase>
+<test_command>admin_network_ping 10.35.141.2</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>admin_network_dns set 10.0.2.35</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>admin_config_banner set Infoblox</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>admin_config_uuid</test_command>
+</TestCase>
+
+
+<TestCase>
+<system command="sleep 10" description="sleep 60 seconds"/>
+</TestCase>
+
+<TestCase>
+<test_command>input_scp_users add admin</test_command>
+</TestCase>
+
+
+<TestCase>
+<system command="sleep 10" description="sleep 60 seconds"/>
+</TestCase>
+<!--
+<TestCase>
+<test_command>input_scp_users add admin</test_command>
+</TestCase>
+-->
+<TestCase>
+<system command="sleep 10" description="sleep 60 seconds"/>
+</TestCase>
+
+<TestCase>
+<test_command>grid_username set admin</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>grid_password</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>grid_status</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>grid_refresh</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>grid_address set 10.35.141.2</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>grid_register</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>grid_sync</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>grid_test</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>grid_unregister</test_command>
+</TestCase>
+
+<!--
+<TestCase>
+<test_command>admin_network_route set address=10.34.24.1 mask=255.255.255.255 gateway=10.36.0.1</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>admin_network_route set address=10.34.24.2 mask=255.255.255.255 gateway=10.36.0.1</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>admin_network_route set address=10.34.24.3 mask=255.255.255.255 gateway=10.36.0.1</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>admin_network_route set address=10.34.24.4 mask=255.255.255.255 gateway=10.36.0.1</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>admin_network_route set address=10.34.24.5 mask=255.255.255.255 gateway=10.36.0.1</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>admin_network_route set address=10.34.24.6 mask=255.255.255.255 gateway=10.36.0.1</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>admin_network_route set address=10.34.24.7 mask=255.255.255.255 gateway=10.36.0.1</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>admin_network_route set address=10.34.24.8 mask=255.255.255.255 gateway=10.36.0.1</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>admin_network_route set address=10.34.24.9 mask=255.255.255.255 gateway=10.36.0.1</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>admin_network_route set address=10.34.24.10 mask=255.255.255.255 gateway=10.36.0.1</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>admin_network_route set address=10.34.24.11 mask=255.255.255.255 gateway=10.36.0.1</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>admin_network_route set address=10.34.24.12 mask=255.255.255.255 gateway=10.36.0.1</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>admin_network_route set address=10.34.24.13 mask=255.255.255.255 gateway=10.36.0.1</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>admin_network_route set address=10.34.24.14 mask=255.255.255.255 gateway=10.36.0.1</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>admin_network_route set address=10.34.24.15 mask=255.255.255.255 gateway=10.36.0.1</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>admin_network_route set address=10.34.24.16 mask=255.255.255.255 gateway=10.36.0.1</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>admin_network_route set address=10.34.24.17 mask=255.255.255.255 gateway=10.36.0.1</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>admin_network_route set address=10.34.24.18 mask=255.255.255.255 gateway=10.36.0.1</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>admin_network_route set address=10.34.24.19 mask=255.255.255.255 gateway=10.36.0.1</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>admin_network_route set address=10.34.24.20 mask=255.255.255.255 gateway=10.36.0.1</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>admin_network_route set address=10.34.24.21 mask=255.255.255.255 gateway=10.36.0.1</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>admin_network_route set address=10.34.24.22 mask=255.255.255.255 gateway=10.36.0.1</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>admin_network_route set address=10.34.24.23 mask=255.255.255.255 gateway=10.36.0.1</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>admin_network_route set address=10.34.24.24 mask=255.255.255.255 gateway=10.36.0.1</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>admin_network_route set address=10.34.24.25 mask=255.255.255.255 gateway=10.36.0.1</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>admin_network_route set address=10.34.24.26 mask=255.255.255.255 gateway=10.36.0.1</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>admin_network_route set address=10.34.24.27 mask=255.255.255.255 gateway=10.36.0.1</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>admin_network_route set address=10.34.24.28 mask=255.255.255.255 gateway=10.36.0.1</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>admin_network_route set address=10.34.24.29 mask=255.255.255.255 gateway=10.36.0.1</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>admin_network_route set address=10.34.24.30 mask=255.255.255.255 gateway=10.36.0.1</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>admin_network_route set address=10.34.24.31 mask=255.255.255.255 gateway=10.36.0.1</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>admin_network_route set address=10.34.24.32 mask=255.255.255.255 gateway=10.36.0.1</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>admin_network_route set address=10.34.24.33 mask=255.255.255.255 gateway=10.36.0.1</test_command>
+</TestCase>
+
+
+<TestCase>
+<test_command>admin_network_route</test_command>
+</TestCase>
+
+-->
+<TestCase>
+<test_command>admin_support_backup scp://anjank@10.32.1.107/Rachanna/DB/</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>admin_support_backup scp://anjank@10.32.1.107/Rachanna/DB/</test_command>
+</TestCase>
+
+
+<TestCase>
+<test_command>admin_support_restore get</test_command>
+</TestCase>
+
+
+<TestCase>
+<test_command>admin_system_virtual_stat</test_command>
+</TestCase>
+
+<!--
+<TestCase>
+<test_command>admin_system_stats</test_command>
+</TestCase>
+
+
+<TestCase>
+<test_command>network</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>counters</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>memory</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>disk</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>cpu</test_command>
+</TestCase>
+
+
+<TestCase>
+<test_command>reset</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>exit</test_command>
+</TestCase>
+
+<TestCase>
+<test_command>exit</test_command>
+</TestCase>
+-->
+</TestSuite>

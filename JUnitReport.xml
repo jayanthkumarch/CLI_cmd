@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+	<testsuite classname="CLI_COMMANDS" disabled="0" errors="0" failures="22" hostname="" id="1" name="Admin CLI Commands DC" package="" skipped="0" tests="35" time="0" timestamp="0">
+		<testcase id="1" classname="CLI_COMMANDS.FAIL" name="Validating Route for 10.34.24.18 CLI CMD" status=" FAILED" time="">
+			<failure message=" " type="ERROR"/>
+		</testcase>
+		<testcase id="2" classname="CLI_COMMANDS.FAIL" name="Validating Route for 10.34.24.19 CLI CMD" status=" FAILED" time="">
+			<failure message=" " type="ERROR"/>
+		</testcase>
+		<testcase id="3" classname="CLI_COMMANDS.FAIL" name="Validating Route for 10.34.24.20 CLI CMD" status=" FAILED" time="">
+			<failure message=" " type="ERROR"/>
+		</testcase>
+		<testcase id="4" classname="CLI_COMMANDS.FAIL" name="Validating Route for 10.34.24.21 CLI CMD" status=" FAILED" time="">
+			<failure message=" " type="ERROR"/>
+		</testcase>
+		<testcase id="5" classname="CLI_COMMANDS.FAIL" name="Validating Route for 10.34.24.22 CLI CMD" status=" FAILED" time="">
+			<failure message=" " type="ERROR"/>
+		</testcase>
+		<testcase id="6" classname="CLI_COMMANDS.FAIL" name="Validating Route for 10.34.24.23 CLI CMD" status=" FAILED" time="">
+			<failure message=" " type="ERROR"/>
+		</testcase>
+		<testcase id="7" classname="CLI_COMMANDS.FAIL" name="Validating Route for 10.34.24.24 CLI CMD" status=" FAILED" time="">
+			<failure message=" " type="ERROR"/>
+		</testcase>
+		<testcase id="8" classname="CLI_COMMANDS.FAIL" name="Validating Route for 10.34.24.25 CLI CMD" status=" FAILED" time="">
+			<failure message=" " type="ERROR"/>
+		</testcase>
+		<testcase id="9" classname="CLI_COMMANDS.FAIL" name="Validating Route for 10.34.24.26 CLI CMD" status=" FAILED" time="">
+			<failure message=" " type="ERROR"/>
+		</testcase>
+		<testcase id="10" classname="CLI_COMMANDS.FAIL" name="Validating Route for 10.34.24.27 CLI CMD" status=" FAILED" time="">
+			<failure message=" " type="ERROR"/>
+		</testcase>
+		<testcase id="11" classname="CLI_COMMANDS.FAIL" name="Validating Route for 10.34.24.28 CLI CMD" status=" FAILED" time="">
+			<failure message=" " type="ERROR"/>
+		</testcase>
+		<testcase id="12" classname="CLI_COMMANDS.FAIL" name="Validating Route for 10.34.24.29 CLI CMD" status=" FAILED" time="">
+			<failure message=" " type="ERROR"/>
+		</testcase>
+		<testcase id="13" classname="CLI_COMMANDS.FAIL" name="Validating Route for 10.34.24.30 CLI CMD" status=" FAILED" time="">
+			<failure message=" " type="ERROR"/>
+		</testcase>
+		<testcase id="14" classname="CLI_COMMANDS.FAIL" name="Validating Route for 10.34.24.31 CLI CMD" status=" FAILED" time="">
+			<failure message=" " type="ERROR"/>
+		</testcase>
+		<testcase id="15" classname="CLI_COMMANDS.FAIL" name="Validating Route for 10.34.24.32 CLI CMD" status=" FAILED" time="">
+			<failure message=" " type="ERROR"/>
+		</testcase>
+		<testcase id="16" classname="CLI_COMMANDS.FAIL" name="CAPACITY OF STATIC ROUTER IS 32 You have reached the Maximum Number of limits" status=" FAILED" time="">
+			<failure message=" " type="ERROR"/>
+		</testcase>
+		<testcase id="17" classname="CLI_COMMANDS.PASS" name="Validating BACKUP CLI CMD" status=" PASSED" time="">
+		</testcase>
+		<testcase id="18" classname="CLI_COMMANDS.PASS" name="Validating BACKUP CLI CMD" status=" PASSED" time="">
+		</testcase>
+		<testcase id="19" classname="CLI_COMMANDS.PASS" name="Validating RESTORE CLI CMD" status=" PASSED" time="">
+		</testcase>
+		<testcase id="20" classname="CLI_COMMANDS.PASS" name="Validating VIRTUAL STAT CLI CMD" status=" PASSED" time="">
+		</testcase>
+		<testcase id="21" classname="CLI_COMMANDS.FAIL" name="Validating COUNTER CLI CMD" status=" FAILED" time="">
+			<failure message=" " type="ERROR"/>
+		</testcase>
+		<testcase id="22" classname="CLI_COMMANDS.FAIL" name="Validating MEMORY CLI CMD" status=" FAILED" time="">
+			<failure message=" " type="ERROR"/>
+		</testcase>
+		<testcase id="23" classname="CLI_COMMANDS.FAIL" name="Validating DISK CLI CMD" status=" FAILED" time="">
+			<failure message=" " type="ERROR"/>
+		</testcase>
+		<testcase id="24" classname="CLI_COMMANDS.FAIL" name="Validating CPU CLI CMD" status=" FAILED" time="">
+			<failure message=" " type="ERROR"/>
+		</testcase>
+		<testcase id="25" classname="CLI_COMMANDS.FAIL" name="Validating RESET CLI CMD" status=" FAILED" time="">
+			<failure message=" " type="ERROR"/>
+		</testcase>
+		<testcase id="26" classname="CLI_COMMANDS.PASS" name="Validating CONTAINERS CLI CMD" status=" PASSED" time="">
+		</testcase>
+		<testcase id="27" classname="CLI_COMMANDS.FAIL" name="Validating NETWORK CLI CMD" status=" FAILED" time="">
+			<failure message=" " type="ERROR"/>
+		</testcase>
+		<testcase id="28" classname="CLI_COMMANDS.PASS" name="Validating TOP CLI CMD" status=" PASSED" time="">
+		</testcase>
+		<testcase id="29" classname="CLI_COMMANDS.PASS" name="Validating RESTORE SET" status=" PASSED" time="">
+		</testcase>
+		<testcase id="30" classname="CLI_COMMANDS.PASS" name="Validating RESTORE DEL" status=" PASSED" time="">
+		</testcase>
+		<testcase id="31" classname="CLI_COMMANDS.PASS" name="Validating FILE BOUNDARY in FLUME LOG" status=" PASSED" time="">
+		</testcase>
+		<testcase id="32" classname="CLI_COMMANDS.PASS" name="Validating DELETE in FLUME LOG" status=" PASSED" time="">
+		</testcase>
+		<testcase id="33" classname="CLI_COMMANDS.PASS" name="Validating MOVING FILE IN SYSLOG" status=" PASSED" time="">
+		</testcase>
+		<testcase id="34" classname="CLI_COMMANDS.PASS" name="Validating RECEIVED FILE IN SYSLOG" status=" PASSED" time="">
+		</testcase>
+		<testcase id="35" classname="CLI_COMMANDS.PASS" name="Validating DELETED FILE IN SYSLOG" status=" PASSED" time="">
+		</testcase>
+	</testsuite>
+</testsuites>

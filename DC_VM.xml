@@ -1,0 +1,1800 @@
+<START>
+<!--According to the SUTS tag order cses blocks will execute-->
+<SUTS>MGM_MAIN</SUTS>
+<MGM_MAIN>
+<description>DC VM CLI Commands</description>
+<no_wait>false</no_wait>
+<execute>
+
+<papi>
+<system command="python root_host.py " />
+</papi>
+
+<papi>
+<system command="perl set_test_bk.pl [grid1_Master_vip]" />
+</papi>
+
+<papi>
+<description>Validate that 'help' CLI Command </description>
+<generic object_type="console_connect" >
+<dig send1="help"/>
+<dig expect1=".*Available commands:.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+
+<papi>
+<description>Validate that 'info' CLI Command </description>
+<generic object_type="console_connect" >
+<dig send1="info"/>
+<dig expect1=".*DNS configuration:.*" />
+<dig expect2=".*Actual DNS Setting:.*" />
+<dig expect3=".*Configured DNS Setting:.*" />
+<dig expect4=".*Domain configuration:.*" />
+<dig expect5=".*Hostname configuration:.*" />
+<dig expect6=".*IPv4 configuration:.*" />
+<dig expect7=".*Configured System Setting:.*" />
+<dig expect8=".*Static routes configuration:.*" />
+<dig expect9=".*Greeting banner:.*" />
+<dig expect10=".*UUID value:.*" />
+<dig expect11=".*Current version:.*" />
+<dig expect12=".*SCP users configuration:.*" />
+<dig expect13=".*Output cloud mode configuration:.*" />
+<dig expect14=".*agent_id configuration:.*" />
+<dig expect15=".*api_key configuration:.*" />
+<dig expect16=".*Cloud url configuration:.*" />
+<dig expect17=".*Reporting mode configuration:.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'stats' CLI Command</description>
+<generic object_type="console_connect" >
+<dig send1="stats"/>
+<dig expect1=".*CPU stats:.*" />
+<dig expect2=".*Disk space usage:.*" />
+<dig expect3=".*Memory stats:.*" />
+<dig expect4=".*Network stats:.*" />
+<dig expect5=".*Input stats:.*" />
+<dig expect6=".*Cloud output stats:.*" />
+<dig expect7=".*Reporting output stats:.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'help' CLI Command under admin context</description>
+<generic object_type="console_connect" >
+<dig send1="admin"/>
+<dig send2="help"/>
+<dig expect1=".*Available commands:.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'info' CLI Command under admin context </description>
+<generic object_type="console_connect" >
+<dig send2="admin"/>
+<dig send1="info"/>
+<dig expect1=".*DNS configuration:.*" />
+<dig expect2=".*Actual DNS Setting:.*" />
+<dig expect3=".*Configured DNS Setting:.*" />
+<dig expect4=".*Domain configuration:.*" />
+<dig expect5=".*Hostname configuration:.*" />
+<dig expect6=".*IPv4 configuration:.*" />
+<dig expect7=".*Configured System Setting:.*" />
+<dig expect8=".*Static routes configuration:.*" />
+<dig expect9=".*Greeting banner:.*" />
+<dig expect10=".*UUID value:.*" />
+<dig expect11=".*Current version:.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'stats' CLI Command under admin context</description>
+<generic object_type="console_connect" >
+<dig send1="admin"/>
+<dig send2="stats"/>
+<dig expect1=".*CPU stats:.*" />
+<dig expect2=".*Disk space usage:.*" />
+<dig expect3=".*Memory stats:.*" />
+<dig expect4=".*Network stats:.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+
+
+<papi>
+<description>Validate that 'help' CLI Command under admin_network context</description>
+<generic object_type="console_connect" >
+<dig send1="admin"/>
+<dig send2="help"/>
+<dig expect1=".*Available commands:.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+
+
+<papi>
+<description>Validate that 'info' CLI Command under admin_network context </description>
+<generic object_type="console_connect" >
+<dig send1="admin_network"/>
+<dig send1="info"/>
+<dig expect1=".*DNS configuration:.*" />
+<dig expect2=".*Actual DNS Setting:.*" />
+<dig expect3=".*Configured DNS Setting:.*" />
+<dig expect4=".*Domain configuration:.*" />
+<dig expect5=".*Hostname configuration:.*" />
+<dig expect6=".*IPv4 configuration:.*" />
+<dig expect7=".*Configured System Setting:.*" />
+<dig expect8=".*Static routes configuration:.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'set hostname' CLI Command under admin_network context </description>
+<generic object_type="console_connect" >
+<dig send1="admin_network "/>
+<dig send2="set hostname admin"/>
+<dig expect1=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+
+<papi>
+<description>Validate that 'set dns' CLI Command under admin_network context </description>
+<generic object_type="console_connect" >
+<dig send1="admin_network"/>
+<dig send2="set dns 10.0.2.35"/>
+<dig expect1=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'resolve' CLI Command under admin_network context</description>
+<generic object_type="console_connect" >
+<dig send1="admin_network"/>
+<dig send2="resolve [grid_Master_vip]"/>
+<dig expect1=".*Server.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'set domain' CLI Command under admin_network context</description>
+<generic object_type="console_connect" >
+<dig send1="admin_network"/>
+<dig send2="set domain testing.com"/>
+<dig expect1=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'ping' CLI Command under under admin_network context</description>
+<generic object_type="console_connect" >
+<dig send1="admin_network_ping [grid1_Master_vip]"/>
+<dig expect1=".*64 bytes from.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+
+<papi>
+<description>Validate that 'add route' CLI Command under admin_network context</description>
+<generic object_type="console_connect" >
+<dig send1="admin_network_route add address=10.34.24.1 mask=255.255.255.255 gateway=10.34.24.0"/>
+<dig sleep="4"/>
+<dig expect2=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'add route' CLI Command admin_network context </description>
+<generic object_type="console_connect" >
+<dig send1="admin_network_route add address=10.34.24.2 mask=255.255.255.255 gateway=10.34.24.0"/>
+<dig sleep="4"/>
+<dig expect2=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'add route' CLI Command under admin_network context </description>
+<generic object_type="console_connect" >
+<dig send1="admin_network_route add address=10.34.24.3 mask=255.255.255.255 gateway=10.34.24.0"/>
+<dig sleep="4"/>
+<dig expect2=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'add route' CLI Command under admin_network context </description>
+<generic object_type="console_connect" >
+<dig send1="admin_network_route add address=10.34.24.4 mask=255.255.255.255 gateway=10.34.24.0"/>
+<dig sleep="4"/>
+<dig expect2=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'add route' CLI Command under admin_network context </description>
+<generic object_type="console_connect" >
+<dig send1="admin_network_route add address=10.34.24.5 mask=255.255.255.255 gateway=10.34.24.0"/>
+<dig sleep="4"/>
+<dig expect2=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'add route' CLI Command under admin_network context </description>
+<generic object_type="console_connect" >
+<dig send1="admin_network_route add address=10.34.24.6 mask=255.255.255.255 gateway=10.34.24.0"/>
+<dig sleep="4"/>
+<dig expect2=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'add route' CLI Command under admin_network context </description>
+<generic object_type="console_connect" >
+<dig send1="admin_network_route add address=10.34.24.7 mask=255.255.255.255 gateway=10.34.24.0"/>
+<dig sleep="4"/>
+<dig expect2=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'add route' CLI Command under admin_network context </description>
+<generic object_type="console_connect" >
+<dig send1="admin_network_route add address=10.34.24.8 mask=255.255.255.255 gateway=10.34.24.0"/>
+<dig sleep="4"/>
+<dig expect2=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'add route' CLI Command under admin_network context </description>
+<generic object_type="console_connect" >
+<dig send1="admin_network_route add address=10.34.24.9 mask=255.255.255.255 gateway=10.34.24.0"/>
+<dig sleep="4"/>
+<dig expect2=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'add route' CLI Command under admin_network context </description>
+<generic object_type="console_connect" >
+<dig send1="admin_network_route add address=10.34.24.10 mask=255.255.255.255 gateway=10.34.24.0"/>
+<dig sleep="4"/>
+<dig expect2=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'add route' CLI Command under admin_network context</description>
+<generic object_type="console_connect" >
+<dig send1="admin_network_route add address=10.34.24.11 mask=255.255.255.255 gateway=10.34.24.0"/>
+<dig sleep="4"/>
+<dig expect2=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'add route' CLI Command under admin_network context </description>
+<generic object_type="console_connect" >
+<dig send1="admin_network_route add address=10.34.24.12 mask=255.255.255.255 gateway=10.34.24.0"/>
+<dig sleep="4"/>
+<dig expect2=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'add route' CLI Command under admin_network context </description>
+<generic object_type="console_connect" >
+<dig send1="admin_network_route add address=10.34.24.13 mask=255.255.255.255 gateway=10.34.24.0"/>
+<dig sleep="4"/>
+<dig expect2=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'add route' CLI Command under admin_network context </description>
+<generic object_type="console_connect" >
+<dig send1="admin_network_route add address=10.34.24.14 mask=255.255.255.255 gateway=10.34.24.0"/>
+<dig sleep="4"/>
+<dig expect2=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'add route' CLI Command under admin_network context </description>
+<generic object_type="console_connect" >
+<dig send1="admin_network_route add address=10.34.24.15 mask=255.255.255.255 gateway=10.34.24.0"/>
+<dig sleep="4"/>
+<dig expect2=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'add route' CLI Command under admin_network context </description>
+<generic object_type="console_connect" >
+<dig send1="admin_network_route add address=10.34.24.16 mask=255.255.255.255 gateway=10.34.24.0"/>
+<dig sleep="4"/>
+<dig expect2=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'add route' CLI Command under admin_network context </description>
+<generic object_type="console_connect" >
+<dig send1="admin_network_route add address=10.34.24.17 mask=255.255.255.255 gateway=10.34.24.0"/>
+<dig sleep="4"/>
+<dig expect2=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'add route' CLI Command under admin_network context </description>
+<generic object_type="console_connect" >
+<dig send1="admin_network_route add address=10.34.24.18 mask=255.255.255.255 gateway=10.34.24.0"/>
+<dig sleep="4"/>
+<dig expect2=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'add route' CLI Command under admin_network context </description>
+<generic object_type="console_connect" >
+<dig send1="admin_network_route add address=10.34.24.19 mask=255.255.255.255 gateway=10.34.24.0"/>
+<dig sleep="4"/>
+<dig expect2=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'add route' CLI Command under admin_network context </description>
+<generic object_type="console_connect" >
+<dig send1="admin_network_route add address=10.34.24.20 mask=255.255.255.255 gateway=10.34.24.0"/>
+<dig sleep="4"/>
+<dig expect2=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'add route' CLI Command under admin_network context </description>
+<generic object_type="console_connect" >
+<dig send1="admin_network_route add address=10.34.24.21 mask=255.255.255.255 gateway=10.34.24.0"/>
+<dig sleep="4"/>
+<dig expect2=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'add route' CLI Command under admin_network context </description>
+<generic object_type="console_connect" >
+<dig send1="admin_network_route add address=10.34.24.22 mask=255.255.255.255 gateway=10.34.24.0"/>
+<dig sleep="4"/>
+<dig expect2=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'add route' CLI Command under admin_network context </description>
+<generic object_type="console_connect" >
+<dig send1="admin_network_route add address=10.34.24.23 mask=255.255.255.255 gateway=10.34.24.0"/>
+<dig sleep="4"/>
+<dig expect2=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'add route' CLI Command under admin_network context </description>
+<generic object_type="console_connect" >
+<dig send1="admin_network_route add address=10.34.24.24 mask=255.255.255.255 gateway=10.34.24.0"/>
+<dig sleep="4"/>
+<dig expect2=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'add route' CLI Command under admin_network context </description>
+<generic object_type="console_connect" >
+<dig send1="admin_network_route add address=10.34.24.25 mask=255.255.255.255 gateway=10.34.24.0"/>
+<dig sleep="4"/>
+<dig expect2=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'add route' CLI Command under admin_network context </description>
+<generic object_type="console_connect" >
+<dig send1="admin_network_route add address=10.34.24.26 mask=255.255.255.255 gateway=10.34.24.0"/>
+<dig sleep="4"/>
+<dig expect2=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'add route' CLI Command under admin_network context </description>
+<generic object_type="console_connect" >
+<dig send1="admin_network_route add address=10.34.24.27 mask=255.255.255.255 gateway=10.34.24.0"/>
+<dig sleep="4"/>
+<dig expect2=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'add route' CLI Command under admin_network context </description>
+<generic object_type="console_connect" >
+<dig send1="admin_network_route add address=10.34.24.28 mask=255.255.255.255 gateway=10.34.24.0"/>
+<dig sleep="4"/>
+<dig expect2=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'add route' CLI Command under admin_network context </description>
+<generic object_type="console_connect" >
+<dig send1="admin_network_route add address=10.34.24.29 mask=255.255.255.255 gateway=10.34.24.0"/>
+<dig sleep="4"/>
+<dig expect2=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'add route' CLI Command under admin_network context </description>
+<generic object_type="console_connect" >
+<dig send1="admin_network_route add address=10.34.24.30 mask=255.255.255.255 gateway=10.34.24.0"/>
+<dig sleep="4"/>
+<dig expect2=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'add route' CLI Command under admin_network context </description>
+<generic object_type="console_connect" >
+<dig send1="admin_network_route add address=10.34.24.31 mask=255.255.255.255 gateway=10.34.24.0"/>
+<dig sleep="4"/>
+<dig expect2=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'add route' CLI Command under under admin_network context </description>
+<generic object_type="console_connect" >
+<dig send1="admin_network_route add address=10.34.24.32 mask=255.255.255.255 gateway=10.34.24.0"/>
+<dig sleep="4"/>
+<dig expect2=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+
+<papi>
+<description>Validate that 'route has reached maximum limit' CLI Command under admin_network context </description>
+<generic object_type="console_connect" >
+<dig send1="admin_network_route add address=10.34.24.33 mask=255.255.255.255 gateway=10.34.24.0"/>
+<dig sleep="4"/>
+<!--<dig expect2=".*Reached the max.*" />-->
+<dig expect3=".*Reached the max.*of static routes.*32.*"/>
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'help' CLI Command under admin_system context</description>
+<generic object_type="console_connect" >
+<dig send1="admin_system"/>
+<dig send2="help"/>
+<dig expect1=".*Available commands:.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'info' CLI Command under under admin_system context </description>
+<generic object_type="console_connect" >
+<dig send1="admin"/>
+<dig send1="system"/>
+<dig send3="info"/>
+<dig expect1=".*Greeting banner:.*" />
+<dig expect2=".*UUID value:.*" />
+<dig expect3=".*Current version:.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'stats' CLI Command under admin_system context</description>
+<generic object_type="console_connect" >
+<dig send1="admin"/>
+<dig send2="system"/>
+<dig send3="stats"/>
+<dig expect1=".*CPU stats:.*" />
+<dig expect2=".*Disk space usage:.*" />
+<dig expect3=".*Memory stats:.*" />
+<dig expect4=".*Network stats:.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+
+<papi>
+<description>Validate that 'uuid' CLI Command under admin_system context</description>
+<generic object_type="console_connect" >
+<dig send1="admin_system_uuid"/>
+<dig expect2=".* .*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'banner' CLI Command shows banner for the DC VM under admin_system context </description>
+<generic object_type="console_connect" >
+<dig send1="admin_system"/>
+<dig send2="set banner Infoblox"/>
+<dig expect1=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'version' CLI Command shows version of the DC VM under admin_system context </description>
+<generic object_type="console_connect" >
+<dig send1="admin_system_version"/>
+<dig expect1=".*Name.*DataCollector.*" />
+<dig expect2=".*Version.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+
+<papi>
+<description>Validate that 'help' CLI Command under data context</description>
+<generic object_type="console_connect" >
+<dig send1="data"/>
+<dig send2="help"/>
+<dig expect1=".*Available commands:.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'info' CLI Command under data context</description>
+<generic object_type="console_connect" >
+<dig send1="data"/>
+<dig send2="info"/>
+<dig expect1=".*IP address or DNS name for the NIOS Grid:.*" />
+<dig expect2=".*NIOS Grid admin user name:.*" />
+<dig expect3=".*SCP users configuration:.*" />
+<dig expect3=".*Output cloud mode configuration:.*" />
+<dig expect3=".*agent_id configuration:.*" />
+<dig expect3=".*Cloud url configuration:.*" />
+<dig expect3=".*Reporting mode configuration:.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'stats' CLI Command under data context</description>
+<generic object_type="console_connect" >
+<dig send1="data"/>
+<dig send2="stats"/>
+<dig expect1=".*Input stats:.*" />
+<dig expect2=".*Cloud output stats:.*" />
+<dig expect3=".*Reporting output stats:.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'help' CLI Command under data_input context</description>
+<generic object_type="console_connect" >
+<dig send1="data_input"/>
+<dig send2="help"/>
+<dig expect1=".*Available commands:.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi> 
+
+<papi>
+<description>Validate that 'info' CLI Command under data_input context</description>
+<generic object_type="console_connect" >
+<dig send1="data_input"/>
+<dig send2="info"/>
+<dig expect1=".*IP address or DNS name for the NIOS Grid:.*" />
+<dig expect2=".*NIOS Grid admin user name:.*" />
+<dig expect3=".*SCP users configuration:.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'stats' CLI Command under data_input context</description>
+<generic object_type="console_connect" >
+<dig send1="data_input"/>
+<dig send2="stats"/>
+<dig expect1=".*Input stats:.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'help' CLI Command under data_input_scp context</description>
+<generic object_type="console_connect" >
+<dig send1="data_input_scp"/>
+<dig send2="help"/>
+<dig expect1=".*Available commands:.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'info' CLI Command under data_input_scp context </description>
+<generic object_type="console_connect" >
+<dig send1="data_input_scp"/>
+<dig send2="info"/>
+<dig expect1=".*SCP users configuration:.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'stats' CLI Command under data_input_scp context </description>
+<generic object_type="console_connect" >
+<dig send1="data_input_scp"/>
+<dig send2="stats"/>
+<dig expect1=".*Input stats:.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+
+<papi>
+<description>Validate that 'scp add user' CLI Command adding user before backup </description>
+<generic object_type="console_connect" >
+<dig send1="data_input_scp"/>
+<dig send2="add users qa123"/>
+<dig sleep="2"/>
+<dig send2="qa123"/>
+<dig sleep="3"/>
+<dig send3="qa123"/>
+<dig expect1=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+
+<papi>
+<description>Validate that 'backup' CLI Command creates backup file under admin_system context </description>
+<generic object_type="console_connect" >
+<dig send1="admin_system_backup"/>
+<dig sleep="7"/>
+<dig send1="admin_system_backup"/>
+<dig expect2=".*.tgz is created.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'scp del user' CLI Command after backup under admin_system context</description>
+<generic object_type="console_connect" >
+<dig send1="data_input_scp"/>
+<dig send2="del users qa123"/>
+<dig expect1=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'restore' CLI Command under admin_system context</description>
+<generic object_type="console_connect" >
+<dig send1="admin_system_restore"/>
+<dig expect1=".*The following backup file.*" />
+<opt>-i [grid1_Master_vip] -m 1 | tee file1.txt </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'set restore and delete restore ' CLI Command under admin_system context </description>
+<system command="perl backup.pl [grid1_Master_vip]" />
+</papi>
+
+
+<papi>
+<description>Validate that 'scp user ' CLI Command after backup under admin_system context</description>
+<generic object_type="console_connect" >
+<dig send1="show data input scp users"/>
+<dig expect1=".*Registered user.*:.*qa123.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+
+<papi>
+<description>Validate that 'backup scp' CLI Command under admin_system context </description>
+<generic object_type="console_connect" >
+<dig send1="admin_system_backup scp://anjank@10.32.2.156/Rachanna/DB/"/>
+<dig sleep="2"/>
+<dig send2="infoblox"/>
+<dig expect2=".*Uploaded backup.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'restart' CLI Command under under admin_system context </description>
+<generic object_type="console_connect" >
+<dig send1="admin_system_restart"/>
+<dig sleep="3"/>
+<dig send2="y"/>
+<dig sleep="2"/>
+<dig expect1=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Sleep time waiting for DCVM to come up </description>
+<system command="sleep 960" description="sleep 960 seconds" />
+</papi>
+
+<papi>
+<description>Validate that 'load' CLI Command shows version of the DC VM under admin_system context</description>
+<generic object_type="console_connect" >
+<!--<dig send1="admin_system_upgrade_load scp://root@10.32.1.107/DataCollector_9.0.2__2016-05-06-01-36-29_x86_64.upg"/>-->
+<dig send1="admin_system_upgrade_load scp://root@10.32.2.156/DataCollector_9.0.2__2016-06-01-21-19-33_x86_64.upg"/>
+<dig sleep="3"/>
+<dig send2="infoblox"/>
+<dig sleep="260"/>
+<dig expect2=".*Upgrade package is ready.*"/>
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'status' CLI Command under before upgrade under admin_system context</description>
+<generic object_type="console_connect" >
+<dig send1="admin_system_upgrade_status"/>
+<dig expect1=".*Upgrade package: DataCollector.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+
+<papi>
+<description>Validate that 'apply' CLI Command shows DCVM is getting upgraded under admin_system_upgrade context</description>
+<generic object_type="console_connect" >
+<dig send1="admin_system_upgrade_apply"/>
+<dig sleep="20"/>
+<dig send2="y"/>
+<dig sleep="30"/>
+<!--<dig expect2=".*Total.* .*# of files will be forwarded.*"/>-->
+<dig expect2=".*Data forwarding complete, continue upgrading.*"/>
+<dig sleep="30"/>
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>sleep for minutes DCVM upgrade is in progress</description>
+<system command="sleep 960" description="sleep 960 seconds" />
+</papi>
+
+
+
+<papi>
+<system command="python root_host.py " />
+</papi>
+
+
+<papi>
+<system command="perl set_test_bk.pl [grid1_Master_vip]" />
+</papi>
+
+<papi>
+<description>Validate that 'status' CLI Command under after upgrade under admin_system_upgrade context</description>
+<generic object_type="console_connect" >
+<dig send1="admin_system_upgrade_status"/>
+<dig expect1=".*System version: 9.0.2.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+
+<papi>
+<description>Validate that 'revert' CLI Command show DCVM is getting reverted under admin_system_upgrade context </description>
+<generic object_type="console_connect" >
+<dig send1="admin_system_upgrade_revert 5"/>
+<dig sleep="15"/>
+<dig send2="y"/>
+<dig sleep="5"/>
+<dig expect2=".*The session will be terminated.*"/>
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+
+<papi>
+<description>sleep for minutes until DCVM come up after revert</description>
+<system command="sleep 960" description="sleep 960 seconds" />
+</papi>
+
+
+<papi>
+<system command="python root_host.py " />
+</papi>
+
+
+<papi>
+<system command="perl set_test_bk.pl [grid1_Master_vip]" />
+</papi>
+
+
+<papi>
+<description>Validate that 'status' CLI Command after revert under admin_system_upgrade context</description>
+<generic object_type="console_connect" >
+<dig send1="admin_system_upgrade_status"/>
+<dig expect1=".*System version: 1.1.0.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'help' CLI Command under admin_system_performance context</description>
+<generic object_type="console_connect" >
+<dig send1="admin_system_performance"/>
+<dig send2="help"/>
+<dig expect1=".*Available commands:.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'stats' CLI Command under admin_system_performance context </description>
+<generic object_type="console_connect" >
+<dig send1="admin_system_performance"/>
+<dig send2="stats"/>
+<dig expect1=".*CPU stats:.*" />
+<dig expect2=".*Disk stats:.*" />
+<dig expect3=".*Memory stats:.*" />
+<dig expect4=".*Network stats:.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'network' CLI Command under admin_system_performance context</description>
+<generic object_type="console_connect" >
+<dig send1="admin_system_performance_network"/>
+<dig expect1=".*Network interfaces statistics.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'memory' CLI Command under admin_system_performance context</description>
+<generic object_type="console_connect" >
+<dig send1="admin_system_performance_memory"/>
+<dig expect1=".*Memory usage.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'disk' CLI Command under admin_system_performance context</description>
+<generic object_type="console_connect" >
+<dig send1="admin_system_performance_disk"/>
+<dig expect1=".*Disk space usage.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'cpu' CLI Command under admin_system_performance context</description>
+<generic object_type="console_connect" >
+<dig send1="admin_system_performance_cpu"/>
+<dig expect1=".*CPU Load.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+
+<papi>
+<description>Validate that 'help' CLI Command under admin_support context</description>
+<generic object_type="console_connect" >
+<dig send1="admin_support"/>
+<dig send2="help"/>
+<dig expect1=".*Available commands:.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'getbundle scp' CLI Command under admin_support context </description>
+<generic object_type="console_connect" >
+<dig send1="admin_support_getbundle scp://anjank@10.32.2.156/Rachanna/DB/"/>
+<dig sleep="2"/>
+<dig send2="infoblox"/>
+<dig sleep="7"/>
+<dig expect1=".*Uploaded bundle.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'set access off' CLI Command under admin_support context</description>
+<generic object_type="console_connect" >
+<dig send1="admin_support"/>
+<dig send2="set access off"/>
+<dig expect1=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'set access on' CLI Command under admin_support context</description>
+<generic object_type="console_connect" >
+<dig send1="admin_support"/>
+<dig send2="set access on"/>
+<dig expect1=".*Access code.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'set debug off' CLI Command under admin_support context</description>
+<generic object_type="console_connect" >
+<dig send1="admin_support"/>
+<dig send2="set debug off"/>
+<dig expect1=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'set debug on' CLI Command under admin_support context</description>
+<generic object_type="console_connect" >
+<dig send1="admin_support"/>
+<dig send2="set debug on"/>
+<dig expect1=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'virtual_stat' CLI Command under admin_support_diag context</description>
+<generic object_type="console_connect" >
+<dig send1="admin_support_diag_virtual_stat"/>
+<dig expect1=".*CPU speed.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'containers' CLI Command under admin_support_diag context</description>
+<generic object_type="console_connect" >
+<dig send1="admin_support_diag_containers"/>
+<dig expect1=".*CONTAINER.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'counters' CLI Command under admin_support_diag context</description>
+<generic object_type="console_connect" >
+<dig send1="admin_support_diag_counters"/>
+<dig expect1=".*Pipeline statistics.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<!--
+<papi>
+<description>Validate that 'top' CLI Command shows version of the DC VM under admin_support_diag context</description>
+<generic object_type="console_connect" >
+<dig send1="admin_support_diag"/>
+<dig send2="top"/>
+<dig expect2=".*Tasks:.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+-->
+
+<papi>
+<description>Validate that 'info' CLI Command under data_input_grid context</description>
+<generic object_type="console_connect" >
+<dig send1="data_input_grid"/>
+<dig send2="info"/>
+<dig expect1=".*IP address or DNS name for the NIOS Grid:.*" />
+<dig expect2=".*NIOS Grid admin user name:.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'set username ' CLI Command under grid under data_input_grid context</description>
+<generic object_type="console_connect" >
+<dig send1="data_input_grid"/>
+<dig send2="set username admin"/>
+<dig expect1=".*Command applied successfully*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'password' CLI Command under grid under data_input_grid context</description>
+<generic object_type="console_connect" >
+<dig send1="data_input_grid_password"/>
+<dig sleep="2"/>
+<dig send2="infoblox"/>
+<dig sleep="3"/>
+<dig send3="infoblox"/>
+<dig expect1=".*Password updated.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'refresh' CLI Command under data_input_grid context</description>
+<generic object_type="console_connect" >
+<dig send1="data_input_grid_refresh"/>
+<dig expect1=".*1 hour.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'set address' CLI Command under data_input_grid context </description>
+<generic object_type="console_connect" >
+<dig send1="data_input_grid"/>
+<dig send2="set address [grid_Master_vip]"/>
+<dig expect1=".*Command applied successfully.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'register' CLI Command under data_output_reporting_registration context </description>
+<generic object_type="console_connect" >
+<dig send1="data_output_reporting_registration_register"/>
+<dig sleep="10"/>
+<dig expect1=".*Registering Data Collector with the Grid... done.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'test' CLI Command under under data_input_grid context</description>
+<generic object_type="console_connect" >
+<dig send1="data_input_grid_test"/>
+<dig expect1=".*Grid member time zones.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'sync' CLI Command under under data_input_grid context</description>
+<generic object_type="console_connect" >
+<dig send1="data_input_grid_sync"/>
+<dig expect1=".*.*" />
+<!--<dig expect2=".*Updating Grid configuration.*" />-->
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'unregister' CLI Command under data_output_reporting_registration context</description>
+<generic object_type="console_connect" >
+<dig send1="data_output_reporting_registration_unregister"/>
+<dig expect1=".*Unregistering Data Collector from the Grid... done.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'help' CLI Command under data_output context</description>
+<generic object_type="console_connect" >
+<dig send1="data_output"/>
+<dig send2="help"/>
+<dig expect1=".*Available commands:.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'info' CLI Command under data_output context</description>
+<generic object_type="console_connect" >
+<dig send1="data_output"/>
+<dig send2="info"/>
+<dig expect5=".*Output cloud mode configuration:.*" />
+<dig expect4=".*agent_id configuration:.*" />
+<dig expect3=".*api_key configuration:.*" />
+<dig expect2=".*Cloud url configuration:.*" />
+<dig expect2=".*Reporting mode configuration:.*" />
+<dig expect6=".*Reporting mode registration:.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'stats' CLI Command under data_output context </description>
+<generic object_type="console_connect" >
+<dig send1="data_output"/>
+<dig send2="stats"/>
+<dig expect1=".*Cloud output stats:.*" />
+<dig expect2=".*Reporting output stats:.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+
+
+<papi>
+<description>Validate that 'add external viewtype' CLI Command under data_output_global_tags context</description>
+<generic object_type="console_connect" >
+<dig send1="data_output_global_tags"/>
+<dig send2="add viewtype external vvvv"/>
+<dig expect1=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'add internal viewtype' CLI Command under data_output_global_tags context</description>
+<generic object_type="console_connect" >
+<dig send1="data_output_global_tags"/>
+<dig send2="add viewtype internal vvvv"/>
+<dig expect1=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'add external membertype' CLI Command under data_output_global_tags context</description>
+<generic object_type="console_connect" >
+<dig send1="data_output_global_tags"/>
+<dig send2="add member external mmmm"/>
+<dig expect1=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'add internal membertype' CLI Command under data_output_global_tags context</description>
+<generic object_type="console_connect" >
+<dig send1="data_output_global_tags"/>
+<dig send2="add member internal mmmm"/>
+<dig expect1=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+
+<papi>
+<description>Validate that 'help' CLI Command under data_output_reporting context</description>
+<generic object_type="console_connect" >
+<dig send1="data_output_reporting"/>
+<dig send2="help"/>
+<dig expect1=".*Available commands:.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'info' CLI Command under data_output_reporting context</description>
+<generic object_type="console_connect" >
+<dig send1="data_output_reporting"/>
+<dig send2="info"/>
+<dig expect1=".*Reporting mode configuration:.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'stats' CLI Command under data_output_reporting context</description>
+<generic object_type="console_connect" >
+<dig send1="data_output"/>
+<dig send2="stats"/>
+<dig expect1=".*Reporting output stats:.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+
+<papi>
+<description>Validate that 'set mode to forward' CLI Command under data_output_reporting context</description>
+<generic object_type="console_connect" >
+<dig send1="data_output_reporting"/>
+<dig send2="set mode forward"/>
+<dig expect1=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'set mode to hold' CLI Command under data_output_reporting context</description>
+<generic object_type="console_connect" >
+<dig send1="data_output_reporting"/>
+<dig send2="set mode hold"/>
+<dig sleep="6"/>
+<dig expect1=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'set mode to disabled' CLI Command under data_output_reporting context</description>
+<generic object_type="console_connect" >
+<dig send1="data_output_reporting"/>
+<dig send2="set mode disabled"/>
+<dig expect1=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'purge set to NO' CLI Command under data_output_reporting context</description>
+<generic object_type="console_connect" >
+<dig send1="data_output_reporting_purge"/>
+<dig sleep="2"/>
+<dig send2="n"/>
+<dig expect1=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'purge set to YES' CLI Command under data_output_reporting context</description>
+<generic object_type="console_connect" >
+<dig send1="data_output_reporting_purge"/>
+<dig sleep="2"/>
+<dig send2="y"/>
+<dig expect1=".*Reporting output files are deleted.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+
+<papi>
+<description>Validate that 'set agent_id admin' CLI Command under data_output_cloud_registration context</description>
+<generic object_type="console_connect" >
+<dig send1="data_output_cloud_registration"/>
+<dig send2="set agent_id admin"/>
+<dig expect1=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+
+<papi>
+<description>Validate that 'set api_key 1' CLI Command under data_output_cloud_registration context</description>
+<generic object_type="console_connect" >
+<dig send1="data_output_cloud_registration"/>
+<dig send2="set api_key 1"/>
+<dig expect1=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'set url' CLI Command under data_output_cloud_registration context</description>
+<generic object_type="console_connect" >
+<dig send1="data_output_cloud_registration"/>
+<dig send2="set url google.com"/>
+<dig expect1=".*google.com.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+
+<papi>
+<description>Validate that 'set mode to forward' CLI Command under context</description>
+<generic object_type="console_connect" >
+<dig send1="data_output_cloud"/>
+<dig send2="set mode forward"/>
+<dig expect1=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'set mode to hold' CLI Command under data_output_cloud context</description>
+<generic object_type="console_connect" >
+<dig send1="data_output_cloud"/>
+<dig send2="set mode hold"/>
+<dig sleep="9"/>
+<dig expect1=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'set mode to disabled' CLI Command under data_output_cloud context</description>
+<generic object_type="console_connect" >
+<dig send1="data_output_cloud"/>
+<dig send2="set mode disabled"/>
+<dig expect1=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+
+<papi>
+<description>Validate that 'purge set to NO' CLI Command under data_output_cloud context</description>
+<generic object_type="console_connect" >
+<dig send1="data_output_cloud_purge"/>
+<dig sleep="2"/>
+<dig send2="n"/>
+<dig expect1=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'purge set to YES' CLI Command under data_output_cloud context</description>
+<generic object_type="console_connect" >
+<dig send1="data_output_cloud_purge"/>
+<dig sleep="2"/>
+<dig send2="y"/>
+<dig expect1=".*Cloud output files are deleted.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'help' CLI Command under data_output_cloud context</description>
+<generic object_type="console_connect" >
+<dig send1="data_output_cloud"/>
+<dig send2="help"/>
+<dig expect1=".*Available commands:.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'info' CLI Command under data_output_cloud context</description>
+<generic object_type="console_connect" >
+<dig send1="data_output_cloud"/>
+<dig send2="info"/>
+<dig expect1=".*agent_id configuration.*" />
+<dig expect2=".*api_key configuration.*" />
+<dig expect3=".*Cloud url configuration.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+
+<papi>
+<description>Validate that 'help' CLI Command under data_output_global context</description>
+<generic object_type="console_connect" >
+<dig send1="data_output_cloud"/>
+<dig send2="help"/>
+<dig expect1=".*Available commands:.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'info' CLI Command under data_output_global context </description>
+<generic object_type="console_connect" >
+<dig send1="data_output_global"/>
+<dig send2="info"/>
+<dig expect1=".*Member tags:.*" />
+<dig expect2=".*View type tags:.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'help' CLI Command under data_output_cloud_registration context</description>
+<generic object_type="console_connect" >
+<dig send1="data_output_cloud"/>
+<dig send2="help"/>
+<dig expect1=".*Available commands:.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'info' CLI Command under data_output_cloud_registration context </description>
+<generic object_type="console_connect" >
+<dig send1="data_output_cloud_registration"/>
+<dig send2="info"/>
+<dig expect1=".*agent_id configuration:.*" />
+<dig expect2=".*api_key configuration:.*" />
+<dig expect2=".*Cloud url configuration:.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+
+<papi>
+<description>Validate that 'del route' CLI Command under under admin_network context </description>
+<generic object_type="console_connect" >
+<dig send1="del admin network route address=10.34.24.32 mask=255.255.255.255 gateway=10.34.24.0"/>
+<dig sleep="4"/>
+<dig expect2=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'del route' CLI Command under under admin_network context </description>
+<generic object_type="console_connect" >
+<dig send1="del admin network route address=10.34.24.31 mask=255.255.255.255 gateway=10.34.24.0"/>
+<dig sleep="4"/>
+<dig expect2=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+
+
+<papi>
+<description>Validate that 'add route' CLI Command under under admin_network context </description>
+<generic object_type="console_connect" >
+<dig send1="add admin network route address=10.34.24.31 mask=255.255.255.255 gateway=10.34.24.0"/>
+<dig sleep="4"/>
+<dig expect2=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+
+<papi>
+<description>Validate that 'del dns' CLI Command under admin_network context </description>
+<generic object_type="console_connect" >
+<dig send1="admin_network"/>
+<dig send2="del dns 10.0.2.35"/>
+<dig expect1=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'show dns' CLI Command under admin_network context </description>
+<generic object_type="console_connect" >
+<dig send1="show admin network dns"/>
+<dig expect1=".*Actual DNS Setting:.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'show domain' CLI Command under admin_network context</description>
+<generic object_type="console_connect" >
+<dig send1="show admin network domain"/>
+<dig expect1=".*domain:.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'show hostname' CLI Command under admin_network context </description>
+<generic object_type="console_connect" >
+<dig send1="show admin network hostname"/>
+<dig expect1=".*hostname:.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'show route' CLI Command under admin_network context </description>
+<generic object_type="console_connect" >
+<dig send1="show admin network route"/>
+<dig expect1=".*address:.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'add data input scp users' CLI Command  </description>
+<generic object_type="console_connect" >
+<dig send1="add data input scp users user999"/>
+<dig sleep="2"/>
+<dig send2="user456"/>
+<dig sleep="3"/>
+<dig send3="user456"/>
+<dig expect1=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+
+<papi>
+<description>Validate that 'del data input scp users' CLI Command  </description>
+<generic object_type="console_connect" >
+<dig send1="del data input scp users user999"/>
+<dig expect1=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'show data input scp users' CLI Command </description>
+<generic object_type="console_connect" >
+<dig send1="show data input scp users"/>
+<dig expect1=".*Registered.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+
+<papi>
+<description>Validate that 'register' CLI Command under under data_output_reporting_registration context </description>
+<generic object_type="console_connect" >
+<dig send1="data_output_reporting_registration_register"/>
+<dig sleep="5"/>
+<dig expect1=".*Registering Data Collector with the Grid... done.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+
+<papi>
+<description>Validate that 'unregister' CLI Command under data_output_reporting_registration context</description>
+<generic object_type="console_connect" >
+<dig send1="data_output_reporting_registration_unregister"/>
+<dig expect1=".*Unregistering Data Collector from the Grid... done.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'info' CLI Command under data_output_reporting_registration context </description>
+<generic object_type="console_connect" >
+<dig send1="data_output_reporting_registration"/>
+<dig send1="info"/>
+<dig expect1=".*Reporting mode registration:.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+
+<papi>
+<description>Validate that 'Wizard' CLI Command </description>
+<generic object_type="console_connect" >
+<dig send1="wizard"/>
+<dig send2="y"/>
+<dig send3="mode=static gateway=10.36.0.1 address=[grid1_Master_vip] mask=255.255.0.0 vlanid=0"/>
+<dig sleep="2"/>
+<dig send4="10.0.0.1"/>
+<dig expect1=".*ok.*" />
+<dig sleep="2"/>
+<dig send5="qa.com"/>
+<dig expect2=".*ok.*" />
+<dig sleep="2"/>
+<dig send6="hostname.com"/>
+<dig expect3=".*ok.*" />
+<dig sleep="2"/>
+<dig send7="y"/>
+<dig sleep="2"/>
+<dig send38="y"/>
+<dig send8="google.com"/>
+<dig expect4=".*ok.*" />
+<dig send9="1234"/>
+<dig expect5=".*ok.*" />
+<dig send10="agent1234"/>
+<dig expect6=".*ok.*" />
+<dig sleep="2"/>
+<dig send11="y"/>
+<dig sleep="2"/>
+<dig send39="y"/>
+<dig send12="forward"/>
+<dig expect7=".*ok.*" />
+<dig send13="y"/>
+<dig sleep="2"/>
+<dig send14="y"/>
+<dig send15="forward"/>
+<dig expect8=".*ok.*" />
+<dig send16="y"/>
+<dig send17="y"/>
+<dig send18="Greeting Infoblox Data Collection Virtual Machine"/>
+<dig expect9=".*ok.*" />
+<dig send19="y"/>
+<dig send20="y"/>
+<dig send21="dc_user"/>
+<dig send22="qa123"/>
+<dig sleep="3"/>
+<dig send23="qa123"/>
+<dig expect10=".*ok.*" />
+<dig send24="y"/>
+<dig send25="dc_user2"/>
+<dig send26="qa456"/>
+<dig sleep="3"/>
+<dig send27="qa456"/>
+<dig expect11=".*ok.*" />
+<dig send28="n"/>
+<dig send29="y"/>
+<dig send30="y"/>
+<dig send31="[grid_Master_vip]"/>
+<dig expect12=".*ok.*" />
+<dig send32="admin"/>
+<dig expect13=".*ok.*" />
+<dig send33="y"/>
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'scp user' CLI Command under data_input_scp_users </description>
+<generic object_type="console_connect" >
+<dig send1="data_input_scp"/>
+<dig send2="add users admin"/>
+<dig sleep="2"/>
+<dig send2="infoblox"/>
+<dig sleep="3"/>
+<dig send3="infoblox"/>
+<dig expect1=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+
+<papi>
+<description>Validate that 'register' CLI Command under under data_input_grid context </description>
+<generic object_type="console_connect" >
+<dig send1="data_input_grid_register"/>
+<dig sleep="10"/>
+<dig expect1=".*Registering Data Collector with the Grid... done.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'set mode to forward' CLI Command under data_output_reporting context</description>
+<generic object_type="console_connect" >
+<dig send1="data_output_reporting"/>
+<dig send2="set mode forward"/>
+<dig expect1=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Restarting reporting service </description>
+<system command="perl restart_reporting.pl [grid_Master_vip] [grid_Report_vip] " />
+<opt>-i [grid_Report_vip] -m </opt>
+</papi>
+
+
+<papi>
+<description>Sleep time waiting Reporting service to come up </description>
+<system command="sleep 300" description="sleep 300 seconds" />
+</papi>
+
+
+
+<papi>
+<description>Running dig quries command</description>
+<system command="perl dig.pl [grid_Master_vip] " />
+</papi>
+
+<papi>
+<description>sleep for 65 seconds</description>
+<system command="sleep 65" description="sleep 65 seconds" />
+</papi>
+
+<papi>
+<system command="perl dig1.pl [grid_Master_vip] " />
+</papi>
+
+<papi>
+<description>sleep for 65 seconds</description>
+<system command="sleep 65" description="sleep 65 seconds" />
+</papi>
+
+<papi>
+<description>Running access code command to get DCVM password</description>
+<system command="perl access_code.pl [grid1_Master_vip]  > access_code.log" />
+</papi>
+
+
+<papi>
+<description>Copying syslogs and flume logs to Current directory </description>
+<system command="perl new_expect_new_flume.pl [grid1_Master_vip]" />
+</papi>
+
+
+<papi>
+<description>Validate the "Moving" in DC Input syslog </description>
+<validate object_type="file_content" lookFor=".*Moving /infoblox/data/in/flume/dns/.*" fileName="/home/rangadi/jayanth/qa/fr/MAIN/regression/LRT/syslog" >
+<opt>-i [GRID_CLIENT_VIP] -m true </opt>
+</validate>
+</papi>
+
+<papi>
+<description>Validate the "Received" in DC Input syslog </description>
+<validate object_type="file_content" lookFor=".*Received file: captured-dns.*" fileName="/home/rangadi/jayanth/qa/fr/MAIN/regression/LRT/syslog" >
+<opt>-i [GRID_CLIENT_VIP] -m true</opt>
+</validate>
+</papi>
+
+<papi>
+<description>Validate the "Deleted" in DC Input syslog </description>
+<validate object_type="file_content" lookFor=".*Deleted /infoblox/data/in/scp/.*" fileName="/home/rangadi/jayanth/qa/fr/MAIN/regression/LRT/syslog" >
+<opt>-i [GRID_CLIENT_VIP] -m true </opt>
+</validate>
+</papi>
+
+
+<papi>
+<description>Validate the "Preparing to delete file" in flumelog </description>
+<validate object_type="file_content" lookFor=".*Preparing to delete file.*" fileName="/home/rangadi/jayanth/qa/fr/MAIN/regression/LRT/flume.log" >
+<opt>-i [GRID_CLIENT_VIP] -m true </opt>
+</validate>
+</papi>
+
+<papi>
+<description>Validate the "file boundary" in flumelog </description>
+<validate object_type="file_content" lookFor=".*Last read took us just up to a file boundary.*" fileName="/home/rangadi/jayanth/qa/fr/MAIN/regression/LRT/flume.log" >
+<opt>-i [GRID_CLIENT_VIP] -m true </opt>
+</validate>
+</papi>
+
+<papi>
+<description>Validate that 'set mode to disabled' CLI Command under data_output_reporting context</description>
+<generic object_type="console_connect" >
+<dig send1="data_output_reporting"/>
+<dig send2="set mode disabled"/>
+<dig expect1=".*ok.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+<papi>
+<description>Validate that 'unregister' CLI Command under data_input_grid context</description>
+<generic object_type="console_connect" >
+<dig send1="data_input_grid_unregister"/>
+<dig expect1=".*Unregistering Data Collector from the Grid... done.*" />
+<opt>-i [grid1_Master_vip] -m </opt>
+</generic>
+</papi>
+
+
+</execute>
+</MGM_MAIN>
+</START>
+
+
