@@ -1,0 +1,116 @@
+# Update the variables, if necessary
+SUITE_HOME="/home/rangadi/jayanth/qa/fr/MAIN"
+Test_Dir="/home/rangadi/jayanth/qa/fr/MAIN/regression/LRT"
+SUITE_NAME="Data_Collector_CLI_Automation"
+SUITE_FILE="cf_new_approach.dat"
+SUITE_FILE1="access_code.pl"
+SUITE_FILE2="enable_dns_properties.py"
+POOL_DIR="/tmp/${SUITE_NAME}"
+GRID1_TAG_NAME="GRID1"
+
+source /import/tools/qa/bin/qaenv
+
+#rm -rf ${POOL_DIR}
+sleep 200
+
+Master1_IP=`get_lab_info -H $Master1_ID | grep LAN_IPADDR= | sed 's/...........//'`
+
+Member1_ID=`get_lab_info -H $Member1_ID | grep LAN_IPADDR= | sed 's/...........//'`
+
+
+DC_VM_IP=`get_lab_info -H $DC_Vm_ID | grep MGMT_IPADDR= | sed 's/............//'`
+
+
+
+cd ${SUITE_HOME}/regression/LRT/
+rm -rf Infoblox*
+#cd ${POOL_DIR}/${GRID1_TAG_NAME} ; 
+/import/qaddi/sramanathan/IBQACI/get_GM_MGM_pm $Master1_IP
+/import/qaddi/sramanathan/IBQACI/get_GM_pm $Master1_IP
+
+rm -rf /root/.ssh/known_hosts
+##################################################################
+#/import/qaddi/sramanathan/IBQACI/configuration_generator #file=${POOL_DIR}/${GRID1_TAG_NAME}.xml,${POOL_DIR}/${GRID2_TAG_NAME}.xml 
+
+#/import/qaddi/sramanathan/IBQACI/configuration_generator file=/tmp/GRID1.xml #GRID1_MASTER_VIP=$DC_VM_IP GRID_MASTER_VIP=$Master1_IP #GRID_REPORT_VIP=$Member1_ID
+
+#/import/qaddi/sramanathan/IBQACI/configuration_generator #file=${POOL_DIR}/${GRID1_TAG_NAME}.xml GRID1_MASTER_VIP=$DC_VM_IP #GRID_MASTER_VIP=$Master1_IP GRID_REPORT_VIP=$Member1_ID
+
+
+
+#Need to uncomment when additional tag works fine
+#cp "Configuration.xml" ${SUITE_HOME}/regression/LRT/${SUITE_NAME}
+#cp "Configuration.xml" ${SUITE_HOME}/regression/LRT/RIR_SWIP_DC_VM
+
+##################################################################
+######Clearing flume.log and syslog in DC VM########
+cd ${SUITE_HOME}
+rm -rf /root/.ssh/known_hosts
+rm -rf Access_code.log
+perl ${SUITE_FILE1} ${DC_VM_IP} > Access_code.log
+DCPass=`grep "Access code" Access_code.log | cut -c48-55`
+DCRp=`request_password -p datacollector $DCPass`
+perl new_expect_test.pl ${DC_VM_IP} ${DCRp}
+perl expect_syslog.pl ${DC_VM_IP} ${DCRp}
+
+##### Enabling the infra setup ######
+test_conf=$Test_Dir/Validate_dnsloginput_parquetoutput.ini
+
+sed -i 's/GRID_VIP=.*/GRID_VIP='$Master1_IP'/' $test_conf
+#sed -i 's/DC_VM=.*/DC_VM='$Master2_IP'/' $test_conf
+sed -i 's/DC_VM=.*/DC_VM='$DC_VM_IP'/' $test_conf
+#sed -i 's/time=.*/time='$time'/' $test_conf
+
+###### Start the necessary services ######
+ 
+getPAPI $Master1_IP .
+perl Reporting_Service.pl $Master1_IP
+/import/qaddi/sramanathan/IBQACI/start_dns_dhcp_services $Master1_IP
+
+#### enable grid properties and required wapi calls #####
+#python ${SUITE_FILE2}
+cd ${Test_Dir}
+logfile=/home/rangadi/jayanth/qa/fr/MAIN/regression/LRT/testroot/A_${Build_Value}.txt
+
+python enable_dns_properties.py
+sleep 10
+
+log_filename="${SUITE_NAME}.log"
+
+cd ${SUITE_HOME};perl bin/run_mgm -f ${SUITE_HOME}/regression/LRT/${SUITE_FILE} | tee $log_filename
+
+
+#######sending queries to NIOS#######
+#rm -rf query.log
+#perl dig.pl $Master1_IP  > query.log
+#sleep 65
+#perl dig1.pl $Master1_IP
+#sleep 600;
+
+#########dc_input & dc_flume########
+#cd ${SUITE_HOME}
+#perl new_expect_new_flume.pl ${DC_VM_IP} ${DCRp}
+
+#cd ${Test_Dir}
+#chmod 644 syslog
+
+# Getting NITI Report URL from the execution log
+#report_url=`grep "niti_report" $log_filename | tail -2 | sed s/testlogs.*/testlogs/ | sed s/.*-m// | head -1`
+
+# Getting NITI Report URL from the execution log
+report_url1=`grep "niti_report" $log_filename | tail -2 | sed s/testlogs.*/testlogs/ | sed s/.*-m// | head -1`
+#report_url=`echo "${report_url1//ubuntu.inca.infoblox.com/10.36.197.15}"`
+report_url=`echo $report_url1 | sed "s/ubuntu\.inca\.infoblox\.com/10\.36\.197\.15/"`
+
+
+# Getting TESTROOT directory details to copy the XML Report (SUMMARY.xml)
+testroot=`grep set_testroot $log_filename | tail -2 | sed s/.*TestRoot:.// | sed s/\"//g | head -1`
+# Copy the XML report to Jenkin Job's Workspace
+cd "$WORKSPACE"; cp $testroot/SUMMARY.xml .
+
+# Generate JUnit Report from NITI Report
+/import/qaddi/sramanathan/IBQACI/papifr_junit.pl SUMMARY.xml
+# Upload the results into DB
+curl -F "uploadedfile=@SUMMARY_junit.xml" -F user=$BUILD_USER_ID -F build="$Build_Path" -F tag="PAPI FR" -F product="Core DDI" -F build_url="${BUILD_URL}" -F category="NIOS" -F gridip="${Master1_IP}" -F report_url="${report_url}" "http://${SERVER_IP}/${PROJECT_NAME}/uploader.php"
+
+echo "report_url=$report_url" >> $WORKSPACE/build.properties
